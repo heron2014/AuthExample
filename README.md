@@ -1,4 +1,5 @@
 # AuthExample using React Native, Redux and Firebase
+Double factor Authentication (the same form for sign in and sign up)
 
 ### Steps to set up Firebase project
 1. Go to https://console.firebase.google.com/ and sign up for Firebase account.
@@ -24,11 +25,11 @@
 
 ```js
 {
-  email,
-  password,
-  loading,
-  error,
-  user
+  email: ''
+  password: ''
+  loading: BOOLEAN
+  error: ''
+  user: null
 }
 ```
 
