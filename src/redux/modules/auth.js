@@ -3,6 +3,7 @@ import firebase from 'firebase';
 const EMAIL_CHANGED = 'EMAIL_CHANGED';
 const PASSWORD_CHANGED = 'PASSWORD_CHANGED';
 const LOGIN_USER_SUCCESS = 'LOGIN_USER_SUCCESS';
+const LOGIN_USER_FAIL = 'LOGIN_USER_FAIL';
 
 // action creator
 export const emailChanged = (text) => {
@@ -22,17 +23,27 @@ export const passwordChanged = (text) => {
 export const loginUser = ({ email, password  }) => {
   return (dispatch) => {
     firebase.auth().signInWithEmailAndPassword(email, password)
-      .then(user => {
-        dispatch({ type: LOGIN_USER_SUCCESS, payload: user });
-      })
+      .then(user => loginUserSuccess(dispatch, user))
       .catch(() => {
         firebase.auth().createUserWithEmailAndPassword(email, password)
-        .then(user => {
-          dispatch({ type: LOGIN_USER_SUCCESS, payload: user });
-        });
+        .then(user => loginUserSuccess(dispatch, user))
+        .catch(() => loginUserFail(dispatch));
       });
   };
 };
+
+// helper callback function for loginUser only
+const loginUserSuccess = (dispatch, user) => {
+  dispatch({
+    type: LOGIN_USER_SUCCESS,
+    payload: user
+  });
+};
+
+// helper callback function for loginUser only
+const loginUserFail = (dispatch) => {
+  dispatch({ type: LOGIN_USER_FAIL});
+}
 
 const INITIAL_STATE = {
   email: '',
