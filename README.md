@@ -12,7 +12,6 @@ Double factor Authentication (the same form for sign in and sign up)
   - copy the ```config``` object and intilizer (everything inside the script tag excluding script tag -  we don't need it )
   - replace your config with mine in ```src/index.js``` (you should keep these keys secret and never publish to the public, for this example I omit that step because this app is only be used for learning and demonstration purpose)
 
-5. Create test user in Firebase by clcking on ```Authentication``` on the left and then ```ADD USER```
 
 ### Login redux breakdown
 
