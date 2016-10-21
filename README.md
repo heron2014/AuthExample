@@ -13,4 +13,4 @@
 
 ##### Login redux breakdown
 
-![img](images/Readme/login-redux-breakdown.png)
+![img](imagesReadme/login-redux-breakdown.png)
